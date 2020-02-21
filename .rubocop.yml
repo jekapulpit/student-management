@@ -1,0 +1,12 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/initializers/*
+    - config/environments/*
+    - bin/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120

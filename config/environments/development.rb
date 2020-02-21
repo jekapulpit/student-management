@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -64,13 +66,13 @@ Rails.application.configure do
   config.assets.quiet = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
-      port: 587,
-      domain: 'gmail.com',
-      user_name: ENV['email_sender'],
-      password: ENV['password_sender'],
-      authentication: 'plain',
-      enable_starttls_auto: true
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['email_sender'],
+    password: ENV['password_sender'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

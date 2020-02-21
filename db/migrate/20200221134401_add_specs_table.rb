@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSpecsTable < ActiveRecord::Migration[5.2]
   def change
     create_table :specs do |t|

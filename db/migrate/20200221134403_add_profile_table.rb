@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddProfileTable < ActiveRecord::Migration[5.2]
   def change
     create_table :profiles do |t|
