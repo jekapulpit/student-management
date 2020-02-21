@@ -3,4 +3,6 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :company
+
+  enum event_type: %i[discussion interview]
 end

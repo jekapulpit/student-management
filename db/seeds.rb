@@ -112,13 +112,16 @@ EducationProcess.create({
                         })
 
 #companies
+tehart = Company.create({
+                            name: 'iTechArt Group',
+                            contact: Contact.create({
+                                                        email: 'example1@mail.ru',
+                                                        phone_number: '121123123',
+                                                        address: 'example1 address 1'
+                                                    })
+                        })
 
 companies_attributes = [
-    { name: 'iTechArt Group', contact: Contact.create({
-        email: 'example1@mail.ru',
-        phone_number: '121123123',
-        address: 'example1 address 1'
-    }) },
     { name: 'LeverX', contact: Contact.create({
         email: 'example2@mail.ru',
         phone_number: '123123113',
@@ -134,3 +137,37 @@ companies_attributes = [
 companies_attributes.each do |company_attributes|
   Company.create(company_attributes)
 end
+
+#events
+Event.create({
+                 user: zheka,
+                 event_type: :interview,
+                 description: 'some event description',
+                 company: tehart,
+                 event_time: Date.parse('Jan 31 2020')
+             })
+
+Event.create({
+                 user: artem,
+                 event_type: :interview,
+                 description: 'some event description',
+                 company: tehart,
+                 event_time: Date.parse('Jan 31 2020')
+             })
+
+Event.create({
+                 user: danik,
+                 event_type: :interview,
+                 description: 'some event description',
+                 company: tehart,
+                 event_time: Date.parse('Jan 31 2020')
+             })
+
+Event.create({
+                 user: zheka,
+                 event_type: :interview,
+                 description: 'some event description',
+                 company: tehart,
+                 event_time: Date.parse('Jan 30 2020')
+             })
+
