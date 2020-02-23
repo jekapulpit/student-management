@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_141500) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "role"
+    t.integer "role"
     t.integer "access_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
