@@ -27,10 +27,12 @@ class Api::V1::StudentsController < ApplicationController
 
   def create
     User.transaction do
-      contact = Contact.create(contact_params)
-      profile = Profile.create(profile_params)
-      education_process = EducationProcess.create(education_process_params)
-      student = User.create(contact: contact, profile: profile, education_process: education_process, username: params[:username])
+      student = User.new(user_params)
+      student.contact = Contact.create(contact_params)
+      student.profile = Profile.create(profile_params.merge(contact: student.contact))
+      student.education_process = EducationProcess.create(education_process_params)
+      student.role = Role.find_or_create_by(role: :student)
+      student.save
       render json: UserSerializer.new(student).serialized_json
     end
   end
