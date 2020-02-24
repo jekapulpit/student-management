@@ -28,8 +28,7 @@ class Api::V1::StudentsController < ApplicationController
   def create
     User.transaction do
       student = User.new(user_params)
-      student.contact = Contact.create(contact_params)
-      student.profile = Profile.create(profile_params.merge(contact: student.contact))
+      student.profile = Profile.create(profile_params.merge(contact: Contact.create(contact_params)))
       student.education_process = EducationProcess.create(education_process_params)
       student.role = Role.find_or_create_by(role: :student)
       student.save

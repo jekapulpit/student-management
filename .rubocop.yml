@@ -4,6 +4,7 @@ AllCops:
     - config/initializers/*
     - config/environments/*
     - bin/**/*
+    - node_modules/**/*
 
 Style/Documentation:
   Enabled: false
@@ -13,3 +14,10 @@ Style/ClassAndModuleChildren:
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/AbcSize:
+  Max: 20
