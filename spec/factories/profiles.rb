@@ -2,5 +2,9 @@
 
 FactoryBot.define do
   factory :profile do
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    date_of_birth { Faker::Date.birthday(min_age: 17, max_age: 21) }
+    contact
   end
 end

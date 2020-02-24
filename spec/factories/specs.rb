@@ -2,5 +2,9 @@
 
 FactoryBot.define do
   factory :spec do
+    sequence :name do |n|
+      "spec#{n}"
+    end
+    faculty
   end
 end
