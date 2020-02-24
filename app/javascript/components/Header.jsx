@@ -4,7 +4,6 @@ import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { setTab } from "../actions";
 
 const Header = props => {
-    console.log(props.currentTab);
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#students">Student Management</Navbar.Brand>

@@ -19,9 +19,13 @@ export const deleteStudent = student => ({
     student: student
 });
 
-export const setStudent = students => ({
+export const setStudents = students => ({
     type: 'SET_STUDENTS',
     students: students
+});
+
+export const handleEditStudent = () => ({
+    type: 'HANDLE_EDIT_STUDENT',
 });
 //students
 

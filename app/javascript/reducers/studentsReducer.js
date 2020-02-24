@@ -3,6 +3,8 @@ export default (state = { selectedStudent: {} }, action) => {
         case 'SELECT_STUDENT':
             let newSelectedStudent = action.student;
             return { ...state, selectedStudent: newSelectedStudent };
+        case 'HANDLE_EDIT_STUDENT':
+            return { ...state, selectedStudent: { ...state.selectedStudent, editable: !state.selectedStudent.editable } };
         case 'SET_STUDENTS':
             return { ...state, students: action.students };
         case 'ADD_STUDENT':

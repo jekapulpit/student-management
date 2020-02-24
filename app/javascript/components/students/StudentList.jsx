@@ -1,18 +1,24 @@
 import React from 'react';
-import { addStudent, deleteStudent, selectStudent, updateStudent } from '../../actions'
+import { addStudent, deleteStudent, selectStudent, updateStudent, setStudents } from '../../actions'
 import { connect } from "react-redux";
 import { getStudentList } from '../../services/studentsServices';
-import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { Container, Row, Button, Accordion, Card } from 'react-bootstrap';
+import Student from "./Student";
 
 class StudentList extends React.Component {
   componentDidMount() {
-    getStudentList().then(students => this.props.toggleAddStudent(students.data));
+    getStudentList().then(students => this.props.toggleSetStudents(students.data));
   }
 
   render() {
-    console.log(this.props.students);
+    let studentList = this.props.students.map((student) => {
+      return(<Student student={student} key={student.id}/>)
+    });
+
     return (
-      <p>list</p>
+        <Accordion>
+          {studentList}
+        </Accordion>
     );
   }
 }
@@ -27,14 +33,8 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     toggleAddStudent: (student) => {
       dispatch(addStudent(student))
     },
-    toggleDeleteStudent: (student) => {
-      dispatch(deleteStudent(student))
-    },
-    toggleSelectStudent: (student) => {
-      dispatch(selectStudent(student))
-    },
-    toggleUpdateStudent: (student) => {
-      dispatch(updateStudent(student))
+    toggleSetStudents: (students) => {
+      dispatch(setStudents(students))
     },
   }
 };
