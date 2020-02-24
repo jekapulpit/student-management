@@ -3,4 +3,7 @@ export default  {
         selectedStudent: {},
         students: []
     },
+    tabs: {
+        currentTab: 'students'
+    }
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { addStudent, deleteStudent, selectStudent, updateStudent } from '../../actions'
 import { connect } from "react-redux";
 import { getStudentList } from '../../services/studentsServices';
+import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 class StudentList extends React.Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class StudentList extends React.Component {
   render() {
     console.log(this.props.students);
     return (
-        <div>hello world</div>
+      <p>list</p>
     );
   }
 }

@@ -1,12 +1,15 @@
 import React from 'react';
 import store from '../store'
 import { Provider } from 'react-redux'
-import StudentList from "./students/StudentList";
+import ListView from "./ListView";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./Header";
 
 const Application = props => {
   return (
       <Provider store={store}>
-        <StudentList />
+        <Header/>
+        <ListView />
       </Provider>
   );
 };

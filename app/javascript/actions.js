@@ -1,3 +1,4 @@
+//students
 export const addStudent = student => ({
     type: 'ADD_STUDENT',
     student: student
@@ -22,3 +23,11 @@ export const setStudent = students => ({
     type: 'SET_STUDENTS',
     students: students
 });
+//students
+
+//tabs
+export const setTab = tab => ({
+    type: 'SET_TAB',
+    newTab: tab
+});
+//tabs
