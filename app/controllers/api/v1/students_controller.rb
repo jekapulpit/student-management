@@ -12,11 +12,13 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def update
-    @student.profile.update(profile_params)
-    @student.education_process.update(education_process_params)
-    @student.contact.update(contact_params)
-    @student.save
-    render json: UserSerializer.new(@student).serialized_json
+    User.transaction do
+      @student.profile.update(profile_params)
+      @student.education_process.update(education_process_params)
+      @student.contact.update(contact_params)
+      @student.save
+      render json: UserSerializer.new(@student).serialized_json
+    end
   end
 
   def destroy
