@@ -1,13 +1,14 @@
 import React from 'react';
-import { addStudent, deleteStudent, selectStudent, updateStudent, setStudents } from '../../actions'
+import { addStudent, setSpecs, setStudents } from '../../actions'
 import { connect } from "react-redux";
-import { getStudentList } from '../../services/studentsServices';
+import { getStudentList, getSpecList } from '../../services/studentsServices';
 import { Container, Row, Button, Accordion, Card } from 'react-bootstrap';
 import Student from "./Student";
 
 class StudentList extends React.Component {
   componentDidMount() {
     getStudentList().then(students => this.props.toggleSetStudents(students.data));
+    getSpecList().then(specs => this.props.toggleSetSpecs(specs.data));
   }
 
   render() {
@@ -35,6 +36,9 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     },
     toggleSetStudents: (students) => {
       dispatch(setStudents(students))
+    },
+    toggleSetSpecs: (specs) => {
+      dispatch(setSpecs(specs))
     },
   }
 };

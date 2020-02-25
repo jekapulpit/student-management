@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import StudentList from "./students/StudentList";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ListView = props => {
     switch (props.currentTab) {

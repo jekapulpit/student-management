@@ -24,6 +24,11 @@ export const setStudents = students => ({
     students: students
 });
 
+export const setSpecs = specs => ({
+    type: 'SET_SPECS',
+    specs: specs
+});
+
 export const handleEditStudent = () => ({
     type: 'HANDLE_EDIT_STUDENT',
 });

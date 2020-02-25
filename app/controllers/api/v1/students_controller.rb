@@ -3,7 +3,7 @@
 class Api::V1::StudentsController < ApplicationController
   before_action :set_student, only: %i[show update destroy]
   def index
-    students = UserSerializer.new(User.includes(:profile, :spec, :events).where(role: Role.find_by(role: :student)))
+    students = UserSerializer.new(User.includes(:profile, :spec, :events, :contact).where(role: Role.find_by(role: :student)))
     render json: students.serialized_json
   end
 
@@ -12,12 +12,10 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def update
-    User.transaction do
-      @student.profile.update(profile_params)
-      @student.education_process.update(education_process_params)
-      @student.contact.update(contact_params)
-      @student.update(user_params)
-    end
+    @student.profile.update(profile_params)
+    @student.education_process.update(education_process_params)
+    @student.contact.update(contact_params)
+    @student.save
     render json: UserSerializer.new(@student).serialized_json
   end
 

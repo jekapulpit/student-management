@@ -10,7 +10,7 @@ const Application = props => {
   return (
       <Provider store={store}>
         <Header/>
-          <Container>
+          <Container style={{ margin: '20px' }}>
               <Row>
                   <Col xs={4}>
                       <ListView />

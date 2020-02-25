@@ -1,7 +1,8 @@
 export default  {
     students: {
         selectedStudent: {},
-        students: []
+        students: [],
+        specs: []
     },
     tabs: {
         currentTab: 'students'
