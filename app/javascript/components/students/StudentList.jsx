@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getStudentList, getSpecList } from '../../services/studentsServices';
 import { Container, Row, Button, Accordion, Card } from 'react-bootstrap';
 import Student from "./Student";
+import NewStudent from "./NewStudent";
 
 class StudentList extends React.Component {
   componentDidMount() {
@@ -16,8 +17,11 @@ class StudentList extends React.Component {
       return(<Student student={student} key={student.id}/>)
     });
 
+    let activeKey = (this.props.createInProcess ? "0" : this.props.selectedStudent.id);
+
     return (
-        <Accordion>
+        <Accordion activeKey={activeKey}>
+          <NewStudent />
           {studentList}
         </Accordion>
     );
@@ -27,6 +31,7 @@ class StudentList extends React.Component {
 const mapStateToProps = state => ({
   selectedStudent: state.students.selectedStudent,
   students: state.students.students,
+  createInProcess: state.students.addingNew,
 });
 
 const mapDispatchToProps = function(dispatch, ownProps) {

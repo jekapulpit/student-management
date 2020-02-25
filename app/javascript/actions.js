@@ -4,6 +4,10 @@ export const addStudent = student => ({
     student: student
 });
 
+export const handleNewStudent = () => ({
+    type: 'NEW_STUDENT',
+});
+
 export const updateStudent = student => ({
     type: 'UPDATE_STUDENT',
     student: student

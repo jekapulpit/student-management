@@ -2,7 +2,7 @@ export default (state = { selectedStudent: {} }, action) => {
     switch (action.type) {
         case 'SELECT_STUDENT':
             let newSelectedStudent = (action.student.id === state.selectedStudent.id ? {} : action.student);
-            return { ...state, selectedStudent: { ...newSelectedStudent, editable: false } };
+            return { ...state, addingNew: false, selectedStudent: { ...newSelectedStudent, editable: false } };
         case 'HANDLE_EDIT_STUDENT':
             return { ...state, selectedStudent: { ...state.selectedStudent, editable: !state.selectedStudent.editable } };
         case 'SET_STUDENTS':
@@ -11,7 +11,9 @@ export default (state = { selectedStudent: {} }, action) => {
             return { ...state, specs: action.specs };
         case 'ADD_STUDENT':
             let newStudents = state.students.concat(action.student);
-            return { ...state, students: newStudents };
+            return { ...state, students: newStudents, selectedStudent: action.student, addingNew: false };
+        case 'NEW_STUDENT':
+            return { ...state, addingNew: !state.addingNew, selectedStudent: {} };
         case 'UPDATE_STUDENT':
             let updatedStudents = state.students.map(student => {
                 return (student.id === action.student.id ? action.student : student)
