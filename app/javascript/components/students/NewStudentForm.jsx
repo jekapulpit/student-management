@@ -131,6 +131,7 @@ const NewStudentForm = props => {
                             </Accordion.Toggle>
                             <Accordion.Toggle
                                 as={Button}
+                                onClick={() => props.toggleHandleNewStudent()}
                                 variant="danger"
                                 eventKey="0">
                                 cancel

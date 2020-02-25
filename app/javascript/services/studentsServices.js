@@ -27,12 +27,23 @@ export async function updateStudent(studentAttributes) {
 }
 
 export async function createStudent(studentAttributes) {
-    return fetch(`/api/v1/students/`, {
+    return fetch('/api/v1/students/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(studentAttributes)
+    }).then((response) => {
+        return response.json()
+    })
+}
+
+export async function deleteStudent(studentId) {
+    return fetch(`/api/v1/students/${studentId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
     }).then((response) => {
         return response.json()
     })

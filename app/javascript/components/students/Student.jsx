@@ -14,6 +14,7 @@ const Student = props => {
         student={props.student}
         toggleHandleEditStudent={props.toggleHandleEditStudent}
         toggleUpdateStudent={props.toggleUpdateStudent}/> : <StudentInfo
+        toggleDeleteStudent={props.toggleDeleteStudent}
         student={props.student}
         toggleHandleEditStudent={props.toggleHandleEditStudent}/>);
     return (
