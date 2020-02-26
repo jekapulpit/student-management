@@ -7,7 +7,6 @@ RSpec.describe Api::V1::StudentsController, type: :controller do
     context 'with valid params' do
       let(:correct_params) do
         {
-          user: { username: 'some_new_username' },
           profile: {
             first_name: 'some_first_name'
           },
@@ -29,7 +28,6 @@ RSpec.describe Api::V1::StudentsController, type: :controller do
 
       it 'updates the user' do
         updated_user = User.find(user.id)
-        expect(updated_user.username).to eq(correct_params[:user][:username])
         expect(updated_user.profile.first_name).to eq(correct_params[:profile][:first_name])
         expect(updated_user.contact.phone_number).to eq(correct_params[:contact][:phone_number])
       end
@@ -41,7 +39,6 @@ RSpec.describe Api::V1::StudentsController, type: :controller do
       let(:spec) { FactoryBot.create(:spec) }
       let(:correct_params) do
         {
-          user: { username: 'some_new_username' },
           profile: {
             first_name: 'some_first_name',
             last_name: 'some_last_name',
@@ -66,7 +63,6 @@ RSpec.describe Api::V1::StudentsController, type: :controller do
 
       it 'creates the user' do
         updated_user = User.last
-        expect(updated_user.username).to eq(correct_params[:user][:username])
         expect(updated_user.profile.first_name).to eq(correct_params[:profile][:first_name])
         expect(updated_user.contact.phone_number).to eq(correct_params[:contact][:phone_number])
       end

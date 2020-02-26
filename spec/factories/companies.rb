@@ -2,5 +2,7 @@
 
 FactoryBot.define do
   factory :company do
+    name { Faker::Nation.national_sport }
+    contact
   end
 end

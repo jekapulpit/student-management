@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class UserSerializer
+class EventSerializer
   include FastJsonapi::ObjectSerializer
-  set_type :user
-  attributes :profile, :spec, :education_process, :contact
+  set_type :event
+  attributes :company, :event_type, :description, :event_time
   set_key_transform :camel_lower
 end

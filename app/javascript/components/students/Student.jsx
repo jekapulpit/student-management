@@ -20,13 +20,12 @@ const Student = props => {
     return (
         <Card>
             <Card.Header>
-                {studentDisplayName}
                 <Accordion.Toggle
                     onClick={() => props.toggleSelectStudent(props.student)}
                     as={Button}
                     variant="text"
                     eventKey={props.student.id}>
-                    {selected}
+                    {studentDisplayName}
                 </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={props.student.id}>

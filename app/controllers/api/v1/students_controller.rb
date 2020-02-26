@@ -3,7 +3,8 @@
 class Api::V1::StudentsController < ApplicationController
   before_action :set_student, only: %i[show update destroy]
   def index
-    students = UserSerializer.new(User.includes(:profile, :spec, :events, :contact).where(role: Role.find_by(role: :student)))
+    students = UserSerializer.new(User.includes(:profile, :spec, :events, :contact)
+                                      .where(role: Role.find_by(role: :student)))
     render json: students.serialized_json
   end
 
