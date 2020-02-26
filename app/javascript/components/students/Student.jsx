@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import {Nav, Navbar, Form, FormControl, Button, Card, Accordion} from 'react-bootstrap';
-import {deleteStudent, handleEditStudent, selectStudent, updateStudent} from "../../actions";
+import {deleteStudent, setEvents, handleEditStudent, selectStudent, updateStudent} from "../../actions";
 import StudentInfo from "./StudentInfo";
 import StudentForm from "./StudentForm";
 
@@ -21,7 +21,10 @@ const Student = props => {
         <Card>
             <Card.Header>
                 <Accordion.Toggle
-                    onClick={() => props.toggleSelectStudent(props.student)}
+                    onClick={() => {
+                        props.toggleSelectStudent(props.student);
+                        console.log(props.selectedStudent)
+                    }}
                     as={Button}
                     variant="text"
                     eventKey={props.student.id}>
@@ -56,6 +59,9 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         toggleUpdateStudent: (student) => {
             dispatch(updateStudent(student))
         },
+        toggleSetEvents: (events) => {
+            dispatch(setEvents(events))
+        }
     }
 };
 

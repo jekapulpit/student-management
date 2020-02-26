@@ -6,6 +6,6 @@ import initialState from './initialState';
 export default createStore(
     combineReducers({
         students: studentsReducer,
-        tabs: tabsReducer
+        tabs: tabsReducer,
     }),
     initialState);

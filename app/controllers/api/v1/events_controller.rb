@@ -3,7 +3,7 @@
 class Api::V1::EventsController < ApplicationController
   before_action :set_event, only: %i[show update destroy]
   def index
-    events = EventSerializer.new(Event.includes(:company).all)
+    events = EventSerializer.new(Event.includes(:company).where(user_id: params[:user_id]))
     render json: events.serialized_json
   end
 
