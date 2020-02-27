@@ -5,6 +5,7 @@ export default  {
         specs: [],
         events: [],
         addingNew: false,
+        addingNewEvent: false
     },
     tabs: {
         currentTab: 'students'

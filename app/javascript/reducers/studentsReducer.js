@@ -3,7 +3,13 @@ export default (state = { selectedStudent: {} }, action) => {
         case 'SELECT_STUDENT':
             let newSelectedStudent = (action.student.id === state.selectedStudent.id ? {} : action.student);
             let eventList = (newSelectedStudent.attributes ? newSelectedStudent.attributes.events : []);
-            return { ...state, addingNew: false, selectedStudent: { ...newSelectedStudent, editable: false }, events: eventList };
+            return {
+                ...state,
+                addingNew: false,
+                addingNewEvent: false,
+                selectedStudent: { ...newSelectedStudent, editable: false },
+                events: eventList
+            };
         case 'HANDLE_EDIT_STUDENT':
             return { ...state, selectedStudent: { ...state.selectedStudent, editable: !state.selectedStudent.editable } };
         case 'SET_STUDENTS':
@@ -31,9 +37,9 @@ export default (state = { selectedStudent: {} }, action) => {
             return { ...state, events: events };
         case 'ADD_EVENT':
             let newEvents = state.events.concat(action.event);
-            return { ...state, events: newEvents };
+            return { ...state, events: newEvents, addingNewEvent: false };
         case 'NEW_EVENT':
-            return { ...state, addingNew: !state.addingNew };
+            return { ...state, addingNewEvent: !state.addingNewEvent };
         case 'UPDATE_EVENT':
             let updatedEvents = state.events.map(event => {
                 return (event.id === action.event.id ? action.event : event)
