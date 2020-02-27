@@ -2,13 +2,11 @@ import React from 'react';
 import { connect } from "react-redux";
 import { getCompanyList, getEventList, createEvent, deleteEvent, updateEvent } from '../../services/eventsServices';
 import { Container, Row, Button, Accordion, Card } from 'react-bootstrap';
+import EventList from "../events/EventList";
 
 const StudentView = props => {
-    console.log(props.events);
     return (
-        <div>
-            hello
-        </div>
+        <EventList />
     );
 };
 

@@ -3,6 +3,7 @@ export default  {
         selectedStudent: {},
         students: [],
         specs: [],
+        events: [],
         addingNew: false,
     },
     tabs: {

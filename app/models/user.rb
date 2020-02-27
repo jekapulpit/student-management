@@ -8,4 +8,5 @@ class User < ApplicationRecord
   belongs_to :profile, dependent: :destroy
   has_one :contact, through: :profile
   has_many :events
+  has_many :companies, through: :events
 end

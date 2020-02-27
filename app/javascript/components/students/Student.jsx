@@ -23,7 +23,6 @@ const Student = props => {
                 <Accordion.Toggle
                     onClick={() => {
                         props.toggleSelectStudent(props.student);
-                        console.log(props.selectedStudent)
                     }}
                     as={Button}
                     variant="text"
