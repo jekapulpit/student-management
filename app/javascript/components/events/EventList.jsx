@@ -3,7 +3,7 @@ import { addEvent } from '../../actions'
 import { connect } from "react-redux";
 import Event from './Event'
 import {Button} from 'react-bootstrap';
-import { handleEditEvent, updateEvent, handleNewEvent } from '../../actions'
+import { handleEditEvent, updateEvent, handleNewEvent, deleteEvent } from '../../actions'
 import { createEvent } from '../../services/eventsServices';
 import NewEventForm from "./NewEventForm";
 
@@ -13,6 +13,7 @@ const EventList = props => {
     let eventList = props.events.map((event) => {
         return(<Event
             companies={props.companies}
+            toggleDeleteEvent={props.toggleDeleteEvent}
             toggleHandleEditEvent={props.toggleHandleEditEvent}
             toggleUpdateEvent={props.toggleUpdateEvent}
             event={event}
@@ -57,6 +58,9 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     return {
         toggleAddEvent: (event) => {
             dispatch(addEvent(event))
+        },
+        toggleDeleteEvent: (event) => {
+            dispatch(deleteEvent(event))
         },
         toggleHandleEditEvent: (event) => {
             dispatch(handleEditEvent(event))

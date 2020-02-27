@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, ButtonToolbar, Col, Form, Jumbotron} from 'react-bootstrap';
-import { updateEvent } from "../../services/eventsServices";
+import { Button, ButtonToolbar, ButtonGroup, Jumbotron } from 'react-bootstrap';
+import { updateEvent, deleteEvent } from "../../services/eventsServices";
 import { mapFieldsToValues } from "../../services/mapperService";
 import EventForm from "./EventForm";
 
@@ -18,7 +18,15 @@ const Event = props => {
                     {props.event.attributes.event_type} - {props.event.attributes.company.name}, {props.event.attributes.event_time}
                 </h2>
                 <p>{props.event.attributes.description}</p>
-                <Button variant="secondary" onClick={() => props.toggleHandleEditEvent(props.event)}>edit</Button>
+                <ButtonToolbar className="justify-content-between">
+                    <Button variant="secondary" onClick={() => props.toggleHandleEditEvent(props.event)}>edit</Button>
+                    <Button variant="danger" onClick={() => {
+                        deleteEvent(props.event.id).then((success) => {
+                            if(success)
+                                props.toggleDeleteEvent(props.event)
+                        })
+                    }}>remove</Button>
+                </ButtonToolbar>
             </div>
         ));
     return (

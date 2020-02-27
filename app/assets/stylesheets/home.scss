@@ -15,6 +15,11 @@ html, body {
       &>.row {
         height: 100%;
 
+        &>.col-4, &>.col-8 {
+          max-height: 90%;
+          overflow-y: scroll;
+        }
+
         &>div {
           max-height: 100%;
         }

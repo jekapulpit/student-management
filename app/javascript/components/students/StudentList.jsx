@@ -22,10 +22,7 @@ class StudentList extends React.Component {
     let activeKey = (this.props.createInProcess ? "0" : this.props.selectedStudent.id);
 
     return (
-        <Accordion style={{
-          overflowY: 'scroll',
-          height: '90%'
-        }} activeKey={activeKey}>
+        <Accordion activeKey={activeKey}>
           <NewStudent />
           {studentList}
         </Accordion>
