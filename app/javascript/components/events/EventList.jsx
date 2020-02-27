@@ -2,16 +2,27 @@ import React from 'react';
 import { addEvent } from '../../actions'
 import { connect } from "react-redux";
 import Event from './Event'
-import { updateEvent, createEvent } from '../../services/eventsServices';
+import { handleEditEvent, updateEvent } from '../../actions'
+import { createEvent } from '../../services/eventsServices';
 
 const EventList = props => {
     let eventList = props.events.map((event) => {
-        return(<Event event={event} key={event.id}/>)
+        return(<Event
+            companies={props.companies}
+            toggleHandleEditEvent={props.toggleHandleEditEvent}
+            toggleUpdateEvent={props.toggleUpdateEvent}
+            event={event}
+            key={event.id}/>)
     });
+
+    let title = (props.selectedStudent.attributes ?
+        <h1>Events for {props.selectedStudent.attributes.profile.first_name} {props.selectedStudent.attributes.profile.last_name}</h1> :
+            (<h1>Select a student</h1>)
+    );
 
     return (
         <div>
-            <h1>Events:</h1>
+            {title}
             {eventList}
         </div>
     );
@@ -20,12 +31,19 @@ const EventList = props => {
 const mapStateToProps = state => ({
     selectedStudent: state.students.selectedStudent,
     events: state.students.events,
+    companies: state.companies.companies
 });
 
 const mapDispatchToProps = function(dispatch, ownProps) {
     return {
         toggleAddEvent: (event) => {
             dispatch(addEvent(event))
+        },
+        toggleHandleEditEvent: (event) => {
+            dispatch(handleEditEvent(event))
+        },
+        toggleUpdateEvent: (event) => {
+            dispatch(updateEvent(event))
         },
     }
 };

@@ -70,8 +70,9 @@ export const deleteEvent = event => ({
     event: event
 });
 
-export const handleEditEvent = () => ({
+export const handleEditEvent = (event) => ({
     type: 'HANDLE_EDIT_EVENT',
+    event: event
 });
 //events
 

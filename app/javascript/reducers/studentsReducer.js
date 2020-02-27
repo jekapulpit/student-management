@@ -14,7 +14,7 @@ export default (state = { selectedStudent: {} }, action) => {
             let newStudents = state.students.concat(action.student);
             return { ...state, students: newStudents, selectedStudent: action.student, addingNew: false };
         case 'NEW_STUDENT':
-            return { ...state, addingNew: !state.addingNew, selectedStudent: {} };
+            return { ...state, addingNew: !state.addingNew, selectedStudent: {}, events: [] };
         case 'UPDATE_STUDENT':
             let updatedStudents = state.students.map(student => {
                 return (student.id === action.student.id ? action.student : student)
@@ -25,7 +25,7 @@ export default (state = { selectedStudent: {} }, action) => {
         case 'HANDLE_EDIT_EVENT':
             let events = state.events.map(event => {
                 if(event.id === action.event.id)
-                    return { ...event, editable: true };
+                    return { ...event, editable: !event.editable };
                 return event
             });
             return { ...state, events: events };

@@ -7,7 +7,7 @@ class AddEventsTable < ActiveRecord::Migration[5.2]
       t.belongs_to :company, index: true
       t.integer :event_type
       t.text :description
-      t.datetime :event_time
+      t.date :event_time
       t.timestamp
     end
   end

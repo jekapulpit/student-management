@@ -1,7 +1,8 @@
 import React from 'react';
-import { addStudent, setSpecs, setStudents } from '../../actions'
+import { addStudent, setSpecs, setStudents, setCompanies } from '../../actions'
 import { connect } from "react-redux";
 import { getStudentList, getSpecList } from '../../services/studentsServices';
+import { getCompanyList } from '../../services/eventsServices';
 import { Container, Row, Button, Accordion, Card } from 'react-bootstrap';
 import Student from "./Student";
 import NewStudent from "./NewStudent";
@@ -10,6 +11,7 @@ class StudentList extends React.Component {
   componentDidMount() {
     getStudentList().then(students => this.props.toggleSetStudents(students.data));
     getSpecList().then(specs => this.props.toggleSetSpecs(specs.data));
+    getCompanyList().then(companies => this.props.toggleSetCompanies(companies.data));
   }
 
   render() {
@@ -47,6 +49,9 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     },
     toggleSetSpecs: (specs) => {
       dispatch(setSpecs(specs))
+    },
+    toggleSetCompanies: (companies) => {
+      dispatch(setCompanies(companies))
     },
   }
 };
