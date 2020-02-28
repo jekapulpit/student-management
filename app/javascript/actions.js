@@ -13,9 +13,9 @@ export const updateStudent = student => ({
     student: student
 });
 
-export const selectStudent = student => ({
+export const selectStudent = (student) => ({
     type: 'SELECT_STUDENT',
-    student: student
+    student: student,
 });
 
 export const deleteStudent = student => ({
@@ -51,6 +51,16 @@ export const setEvents = events => ({
     events: events
 });
 
+export const setStudentEvents = events => ({
+    type: 'SET_STUDENT_EVENTS',
+    events: events
+});
+
+export const setCompanyEvents = events => ({
+    type: 'SET_COMPANY_EVENTS',
+    events: events
+});
+
 export const addEvent = event => ({
     type: 'ADD_EVENT',
     event: event
@@ -58,6 +68,10 @@ export const addEvent = event => ({
 
 export const handleNewEvent = () => ({
     type: 'NEW_EVENT',
+});
+
+export const cancelNewEvent = () => ({
+    type: 'CANCEL_NEW_EVENT',
 });
 
 export const updateEvent = event => ({
@@ -80,5 +94,34 @@ export const handleEditEvent = (event) => ({
 export const setCompanies = companies => ({
     type: 'SET_COMPANIES',
     companies: companies
+});
+
+export const addCompany = company => ({
+    type: 'ADD_COMPANY',
+    company: company
+});
+
+export const handleNewCompany = () => ({
+    type: 'NEW_COMPANY',
+});
+
+export const updateCompany = company => ({
+    type: 'UPDATE_COMPANY',
+    company: company
+});
+
+export const deleteCompany = company => ({
+    type: 'DELETE_COMPANY',
+    company: company
+});
+
+export const handleEditCompany = (company) => ({
+    type: 'HANDLE_EDIT_COMPANY',
+    company: company
+});
+
+export const selectCompany = (company) => ({
+    type: 'SELECT_COMPANY',
+    company: company,
 });
 //companies

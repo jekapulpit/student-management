@@ -5,21 +5,45 @@ import { mapFieldsToValues } from "../../services/mapperService";
 
 const EventForm = props => {
     let eventAttributes = {};
-    let companyOptions = props.companies.map((company) => {
-        return <option key={company.id} value={company.id}>{company.attributes.name}</option>;
-    });
-
-    return (
-        <div>
-            <Form.Group controlId="companySelect">
+    let options;
+    let relationInput;
+    switch (props.currentTab) {
+        case 'students':
+            options = props.companies.map((company) => {
+                return <option key={company.id} value={company.id}>{company.attributes.name}</option>;
+            });
+            relationInput = <Form.Group controlId="companySelect">
                 <Form.Label>Related Company</Form.Label>
                 <Form.Control
                     defaultValue={props.event.attributes.company.id}
                     ref={input => eventAttributes.company_id = input}
                     as="select">
-                    {companyOptions}
+                    {options}
                 </Form.Control>
-            </Form.Group>
+            </Form.Group>;
+            break;
+        case 'companies':
+            options = props.students.map((student) => {
+                return <option key={student.id}
+                               value={student.id}>{student.attributes.profile.first_name} {student.attributes.profile.last_name}</option>;
+            });
+            relationInput = <Form.Group controlId="studentSelect">
+                <Form.Label>Related Student</Form.Label>
+                <Form.Control
+                    defaultValue={props.event.attributes.user.id}
+                    ref={input => eventAttributes.user_id = input}
+                    as="select">
+                    {options}
+                </Form.Control>
+            </Form.Group>;
+            break;
+        default:
+            relationInput = null;
+    }
+
+    return (
+        <div>
+            {relationInput}
             <Form.Group controlId="eventTypeSelect">
                 <Form.Label>Event Type</Form.Label>
                 <Form.Control

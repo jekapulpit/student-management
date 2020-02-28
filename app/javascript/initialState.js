@@ -9,5 +9,12 @@ export default  {
     },
     tabs: {
         currentTab: 'students'
-    }
+    },
+    companies: {
+        selectedCompany: {},
+        companies: [],
+        events: [],
+        addingNew: false,
+        addingNewEvent: false
+    },
 };

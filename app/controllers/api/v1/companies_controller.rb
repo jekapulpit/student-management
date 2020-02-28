@@ -4,7 +4,7 @@ class Api::V1::CompaniesController < ApplicationController
   before_action :set_company, only: %i[show update destroy]
 
   def index
-    companies = CompanySerializer.new(Company.all)
+    companies = CompanySerializer.new(Company.includes(:contact, :profiles).all)
     render json: companies.serialized_json
   end
 

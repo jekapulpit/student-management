@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
 import {Nav, Navbar, Form, FormControl, Button, Card, Accordion} from 'react-bootstrap';
-import {deleteStudent, setEvents, handleEditStudent, selectStudent, updateStudent} from "../../actions";
+import {deleteStudent, handleEditStudent, selectStudent, updateStudent, cancelNewEvent} from "../../actions";
 import StudentInfo from "./StudentInfo";
 import StudentForm from "./StudentForm";
 
 const Student = props => {
     let studentDisplayName = `${props.student.attributes.profile.first_name} ${props.student.attributes.profile.last_name}, ${props.student.attributes.spec.name}`;
     let editable = (props.selectedStudent.id === props.student.id && props.selectedStudent.editable);
-    let selected = (props.selectedStudent.id === props.student.id ? 'close' : 'open');
     let fullInformation = (editable ? <StudentForm
         specs={props.specs}
         student={props.student}
@@ -41,7 +40,8 @@ const Student = props => {
 
 const mapStateToProps = state => ({
     selectedStudent: state.students.selectedStudent,
-    specs: state.students.specs
+    specs: state.students.specs,
+    events: state.events.events
 });
 
 const mapDispatchToProps = function(dispatch, ownProps) {
@@ -50,6 +50,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
             dispatch(handleEditStudent())
         },
         toggleSelectStudent: (student) => {
+            dispatch(cancelNewEvent())
             dispatch(selectStudent(student))
         },
         toggleDeleteStudent: (student) => {
@@ -58,9 +59,6 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         toggleUpdateStudent: (student) => {
             dispatch(updateStudent(student))
         },
-        toggleSetEvents: (events) => {
-            dispatch(setEvents(events))
-        }
     }
 };
 

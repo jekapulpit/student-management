@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import StudentView from "./students/StudentView";
 import "react-datepicker/dist/react-datepicker.css";
+import EventList from "./events/EventList";
 
 const DetailView = props => {
-    switch (props.currentTab) {
-        case 'students': return (<StudentView />);
-        default: return <p>some other entity</p>
-    }
+    return <EventList />
 };
 
 const mapStateToProps = state => ({

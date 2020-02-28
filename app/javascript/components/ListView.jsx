@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from "react-redux";
 import StudentList from "./students/StudentList";
 import "react-datepicker/dist/react-datepicker.css";
+import CompanyList from "./companies/CompanyList";
 
 const ListView = props => {
     switch (props.currentTab) {
         case 'students': return (<StudentList />);
+        case 'companies': return (<CompanyList />);
         default: return <p>some other list</p>
     }
 };
